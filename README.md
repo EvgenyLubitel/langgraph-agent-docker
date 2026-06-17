@@ -33,16 +33,8 @@ flowchart LR
     E --> F[Ответ]
     F --> G[Пользователь]
 
-=== LangGraph Agent Demo ===
-
-📤 Запрос: Какие ноутбуки есть в наличии?
-✅ Ответ: Ноутбуки в наличии: Ноутбук ASUS ROG, Ноутбук Lenovo Legion
-
-📤 Запрос: Какая сегодня погода?
-✅ Ответ: Погода: +25°C, солнечно
-
-📤 Запрос: Какой ноутбук купить?
-✅ Ответ: Ноутбуки в наличии: Ноутбук ASUS ROG, Ноутбук Lenovo Legion
+$body = @{query = "Что нового в мире AI?"} | ConvertTo-Json
+Invoke-RestMethod -Uri "https://langgraphagent-evgenylubitel.amvera.io/ask" -Method POST -Body $body -ContentType "application/json"
 
 
 
