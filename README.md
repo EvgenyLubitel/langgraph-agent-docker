@@ -32,8 +32,28 @@ flowchart LR
     D --> E[Инструменты]
     E --> F[Ответ]
     F --> G[Пользователь]
-$body = @{query = "Какие ноутбуки есть в наличии?"} | ConvertTo-Json
-Invoke-RestMethod -Uri "https://langgraphagent-evgenylubitel.amvera.io/ask" -Method POST -Body $body -ContentType "application/json"
+
+---
+
+## 🎯 Что показывает этот проект
+
+- LangGraph — графовая логика AI-агента
+- n8n — визуальная оркестрация
+- FastAPI + Docker — Python-микросервис
+- Инструменты — поиск, API, БД
+- REST API — интеграция между сервисами
+- Production-ready деплой — Amvera
+
+---
+
+## 🔗 Ссылки
+
+- GitHub: github.com/EvgenyLubitel/langgraph-agent-docker
+- Демо: langgraphagent-evgenylubitel.amvera.io
+
+---
+
+body=@query="Какойноутбуккупить?"∣ConvertTo−JsonInvoke−RestMethod−Uri"https://n8n−graphrag−evgenylubitel.amvera.io/webhook/ask−agent"−MethodPOST−Bodybody -ContentType "application/json"
 
 
 
