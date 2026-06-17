@@ -53,7 +53,7 @@ flowchart LR
 
 ---
 
-body=@query="Какойноутбуккупить?"∣ConvertTo−JsonInvoke−RestMethod−Uri"https://n8n−graphrag−evgenylubitel.amvera.io/webhook/ask−agent"−MethodPOST−Bodybody -ContentType "application/json"
+Invoke-RestMethod -Uri "https://n8n-graphrag-evgenylubitel.amvera.io/webhook/ask-agent" -Method POST -ContentType "application/json" -Body '{"query": "Какой ноутбук купить?"}'
 
 
 
