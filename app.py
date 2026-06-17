@@ -23,7 +23,7 @@ class AgentState(BaseModel):
     tools: List[str]
     done: bool
 
-# Íàñòðîéêà AITUNNEL
+# Настройка AITUNNEL
 llm = ChatOpenAI(
     model="gpt-3.5-turbo",
     temperature=0.2,
@@ -32,13 +32,13 @@ llm = ChatOpenAI(
 )
 
 def analyze(state: AgentState) -> AgentState:
-    state.steps.append("Àíàëèç çàïðîñà")
+    state.steps.append("Анализ запроса")
     state.tools.append("analyzer")
     
-    if "íîóòáóê" in state.query.lower():
-        state.answer = "Â íàëè÷èè: ASUS ROG Strix G15, öåíà 89 990 ðóá"
+    if "ноутбук" in state.query.lower():
+        state.answer = "В наличии: ASUS ROG Strix G15, цена 89 990 руб"
     else:
-        state.answer = "Èíôîðìàöèÿ íå íàéäåíà"
+        state.answer = "Информация не найдена"
     
     state.done = True
     return state
@@ -63,9 +63,11 @@ async def ask(request: AgentRequest):
         done=False
     )
     result = agent.invoke(state)
+    
+    # Извлекаем данные из результата (LangGraph возвращает dict)
     return AgentResponse(
         success=True,
-        answer=result.answer,
-        steps=result.steps,
-        tools=result.tools
+        answer=result.get("answer", "Ответ не найден"),
+        steps=result.get("steps", []),
+        tools=result.get("tools", [])
     )
