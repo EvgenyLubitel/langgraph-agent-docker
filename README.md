@@ -32,3 +32,22 @@ flowchart LR
     D --> E[Инструменты]
     E --> F[Ответ]
     F --> G[Пользователь]
+
+Write-Host "`n=== LangGraph Agent Demo ===" -ForegroundColor Cyan
+
+$queries = @(
+    "Какие ноутбуки есть в наличии?",
+    "Какая сегодня погода?",
+    "Какой ноутбук купить?"
+)
+
+foreach ($q in $queries) {
+    Write-Host "`n📤 Запрос: $q" -ForegroundColor Yellow
+    $body = @{query = $q} | ConvertTo-Json
+    $response = Invoke-RestMethod -Uri "https://langgraphagent-evgenylubitel.amvera.io/ask" -Method POST -Body $body -ContentType "application/json"
+    Write-Host "✅ Ответ: $($response.answer)" -ForegroundColor Green
+}
+
+
+
+
