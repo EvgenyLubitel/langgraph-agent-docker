@@ -32,8 +32,7 @@ flowchart LR
     D --> E[Инструменты]
     E --> F[Ответ]
     F --> G[Пользователь]
-
-$body = @{query = "Что нового в мире AI?"} | ConvertTo-Json
+$body = @{query = "Какие ноутбуки есть в наличии?"} | ConvertTo-Json
 Invoke-RestMethod -Uri "https://langgraphagent-evgenylubitel.amvera.io/ask" -Method POST -Body $body -ContentType "application/json"
 
 
