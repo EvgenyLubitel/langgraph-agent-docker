@@ -27,12 +27,21 @@ Direct: прямой ответ LLM
 - REST API: интеграция между сервисами
 - Production-ready деплой: Amvera
 
-## Ссылки
+## Тестовый запрос (PowerShell)
 
-GitHub: github.com/EvgenyLubitel/langgraph-agent-docker
-Демо: langgraphagent-evgenylubitel.amvera.io
-n8n: n8n-graphrag-evgenylubitel.amvera.io
+Скопируйте и выполните команду:
 
+```powershell
 $r = Invoke-RestMethod -Uri "https://n8n-graphrag-evgenylubitel.amvera.io/webhook/ask-agent" -Method POST -ContentType "application/json" -Body '{"query": "Какой ноутбук купить?"}'
 $r | Format-List
-MIT
+```
+
+**Пример ответа:**
+```
+success : True
+answer  : Ноутбуки в наличии: Ноутбук ASUS ROG, Ноутбук Lenovo Legion
+steps   : Выбор инструмента → Выполнение инструмента
+tools   : selector, selected: db, db
+```
+
+
